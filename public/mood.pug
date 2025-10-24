@@ -1,0 +1,55 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1')
+    title Select Your Mood - MoodMeal
+    link(rel='stylesheet' href='css/style.css')
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' rel='stylesheet')
+  body
+    nav.navbar
+      .nav-container
+        .logo 🍽️ MoodMeal
+        ul.nav-links
+          li
+            a(href='/') Home
+          li
+            a.active(href='/mood') Find Meal
+          li
+            a(href='/favorites') Favorites
+          li
+            a(href='/about') About
+    section.mood-section
+      .container
+        h1.page-title How are you feeling today?
+        p.page-subtitle Select your mood and we'll suggest the perfect meal
+        .mood-grid
+          .mood-card(data-mood='happy')
+            .mood-emoji 😊
+            h3 Happy
+            p Feeling joyful and cheerful
+          .mood-card(data-mood='sad')
+            .mood-emoji 😢
+            h3 Sad
+            p Need some comfort food
+          .mood-card(data-mood='energetic')
+            .mood-emoji ⚡
+            h3 Energetic
+            p Full of energy and excitement
+          .mood-card(data-mood='calm')
+            .mood-emoji 🧘
+            h3 Calm
+            p Looking for peace and tranquility
+          .mood-card(data-mood='stressed')
+            .mood-emoji 😰
+            h3 Stressed
+            p Need something to relax
+          .mood-card(data-mood='romantic')
+            .mood-emoji 😍
+            h3 Romantic
+            p In the mood for love
+    footer.footer
+      p © 2025 MoodMeal. Made with ❤️ for food lovers.
+    script(src='js/script.js')

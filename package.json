@@ -1,0 +1,33 @@
+{
+  "name": "moodmeal",
+  "version": "1.0.0",
+  "description": "MoodMeal - Find the perfect meal for every mood",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "setup-admin": "node setup-admin.js",
+    "populate-meals": "node populateMeals.js"
+  },
+  "keywords": [
+    "food",
+    "mood",
+    "meal",
+    "recommendation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2",
+    "express-session": "^1.18.2",
+    "mongoose": "^8.19.1",
+    "pug": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "html2pug": "^4.0.0"
+  }
+}

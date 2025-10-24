@@ -1,0 +1,59 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1')
+    title MoodMeal - Find Your Perfect Meal
+    link(rel='stylesheet' href='css/style.css')
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' rel='stylesheet')
+  body
+    nav.navbar
+      .nav-container
+        .logo MoodMeal
+        ul.nav-links
+          li
+            a.active(href='/') Home
+          li
+            a(href='/mood') Find Meal
+          li
+            a(href='/favorites') Favorites
+          li
+            a(href='/about') About
+    section.hero
+      .hero-content
+        h1.hero-title
+          | Welcome to
+          span.gradient-text MoodMeal
+        p.hero-subtitle Discover the perfect meal for every mood
+        p.hero-description.
+          Your emotions deserve the right meal. Whether you're happy, sad, stressed, or energetic, we'll help you find the perfect dish to match your current vibe.
+        a.cta-button(href='/mood')
+          span Start Your Journey
+          span.arrow
+      .hero-image
+        .floating-emoji.emoji-1
+        .floating-emoji.emoji-2
+        .floating-emoji.emoji-3
+        .floating-emoji.emoji-4
+        .floating-emoji.emoji-5
+        .floating-emoji.emoji-6
+    section.features
+      h2.section-title How It Works
+      .features-grid
+        .feature-card
+          .feature-icon
+          h3 Select Your Mood
+          p Tell us how you're feeling today from our mood selection
+        .feature-card
+          .feature-icon
+          h3 Get Personalized Suggestions
+          p Receive meal recommendations tailored to your current mood
+        .feature-card
+          .feature-icon
+          h3 Save Your Favorites
+          p Keep track of meals you love for quick access later
+    footer.footer
+      p © 2025 MoodMeal. Made with ❤️ for food lovers.
+    script(src='js/script.js')

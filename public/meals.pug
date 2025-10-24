@@ -1,0 +1,44 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1')
+    title Meal Suggestions - MoodMeal
+    link(rel='stylesheet' href='css/style.css')
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' rel='stylesheet')
+  body
+    nav.navbar
+      .nav-container
+        .logo 🍽️ MoodMeal
+        ul.nav-links
+          li
+            a(href='/') Home
+          li
+            a(href='/mood') Find Meal
+          li
+            a(href='/favorites') Favorites
+          li
+            a(href='/about') About
+    section.meals-section
+      .container
+        .mood-indicator
+          h2
+            | Your Mood: 
+            span#current-mood.gradient-text Happy
+            |  😊
+          button.change-mood-btn(onclick='window.location.href=\'/mood\'') Change Mood
+        h1.page-title Perfect Meals for Your Mood
+        p.page-subtitle We've curated these delicious options just for you
+        #meals-container.meals-grid
+          //  Meals will be dynamically loaded here 
+        .no-meals#no-meals(style='display: none;')
+          .empty-state
+            .empty-emoji 😔
+            h3 No meals found
+            p Try selecting a different mood
+            a.cta-button(href='/mood') Select Mood
+    footer.footer
+      p © 2025 MoodMeal. Made with ❤️ for food lovers.
+    script(src='js/script.js')

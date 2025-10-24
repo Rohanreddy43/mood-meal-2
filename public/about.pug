@@ -1,0 +1,77 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1')
+    title About - MoodMeal
+    link(rel='stylesheet' href='css/style.css')
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' rel='stylesheet')
+  body
+    nav.navbar
+      .nav-container
+        .logo MoodMeal
+        ul.nav-links
+          li
+            a(href='/') Home
+          li
+            a(href='/mood') Find Meal
+          li
+            a(href='/favorites') Favorites
+          li
+            a.active(href='/about') About
+    section.about-section
+      .container
+        h1.page-title
+          | About 
+          span.gradient-text MoodMeal
+        .about-content
+          .about-intro
+            .about-icon
+            h2 Our Mission
+            p.large-text.
+              
+              At MoodMeal, we believe that food is more than just sustenance - it's an emotional experience. Every mood deserves the perfect meal to complement it, whether you're celebrating, seeking comfort, or just looking for something exciting.
+              
+          .about-features
+            .about-card
+              .about-card-icon
+              h3 The Concept
+              p.
+                
+                MoodMeal was born from the simple observation that what we want to eat often depends on how we're feeling. We've taken the guesswork out of meal planning by matching dishes with emotional states.
+                
+            .about-card
+              .about-card-icon
+              h3 How It Works
+              p.
+                
+                Select your current mood from our carefully curated list, and our system recommends meals that perfectly match your emotional state. It's that simple!
+                
+            .about-card
+              .about-card-icon
+              h3 Our Promise
+              p.
+                
+                We're committed to making your meal decisions easier and more enjoyable. Every suggestion is thoughtfully chosen to enhance your dining experience based on your emotional needs.
+                
+          .about-stats
+            .stat-card
+              .stat-number 8+
+              .stat-label Mood Categories
+            .stat-card
+              .stat-number 50+
+              .stat-label Meal Options
+            .stat-card
+              .stat-number 100%
+              .stat-label Satisfaction Goal
+          .about-cta
+            h2 Ready to find your perfect meal?
+            p Start your journey with MoodMeal today and discover how the right meal can make all the difference.
+            a.cta-button(href='/mood')
+              span Get Started
+              span.arrow 
+    footer.footer
+      p ┬⌐ 2025 MoodMeal. Made with for food lovers.
+    script(src='js/script.js')

@@ -1,0 +1,38 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1')
+    title Favorites - MoodMeal
+    link(rel='stylesheet' href='css/style.css')
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap' rel='stylesheet')
+  body
+    nav.navbar
+      .nav-container
+        .logo ❤️ MoodMeal
+        ul.nav-links
+          li
+            a(href='/') Home
+          li
+            a(href='/mood') Find Meal
+          li
+            a.active(href='/favorites') Favorites
+          li
+            a(href='/about') About
+    section.favorites-section
+      .container
+        h1.page-title Your Favorite Meals
+        p.page-subtitle Quick access to all your saved meals
+        #favorites-container.meals-grid
+          //  Favorite meals will be dynamically loaded here 
+        .no-favorites#no-favorites
+          .empty-state
+            .empty-emoji ❤️
+            h3 No favorites yet
+            p Start exploring meals and add your favorites!
+            a.cta-button(href='/mood') Find Meals
+    footer.footer
+      p ┬⌐ 2025 MoodMeal. Made with ❤️ for food lovers.
+    script(src='js/script.js')

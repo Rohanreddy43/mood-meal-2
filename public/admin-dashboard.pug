@@ -1,0 +1,569 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1')
+    title Admin Dashboard - MoodMeal
+    style.
+      
+      * {
+                  margin: 0;
+                  padding: 0;
+                  box-sizing: border-box;
+              }
+      
+              body {
+                  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                  background: #f5f5f5;
+              }
+      
+              .navbar {
+                  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                  color: white;
+                  padding: 15px 30px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+              }
+      
+              .navbar h1 {
+                  font-size: 24px;
+              }
+      
+              .navbar-right {
+                  display: flex;
+                  gap: 15px;
+                  align-items: center;
+              }
+      
+              .btn {
+                  padding: 8px 16px;
+                  border: none;
+                  border-radius: 5px;
+                  cursor: pointer;
+                  font-size: 14px;
+                  transition: all 0.3s;
+              }
+      
+              .btn-primary {
+                  background: white;
+                  color: #667eea;
+                  font-weight: 600;
+              }
+      
+              .btn-primary:hover {
+                  transform: translateY(-2px);
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+              }
+      
+              .btn-danger {
+                  background: #ff4444;
+                  color: white;
+              }
+      
+              .btn-success {
+                  background: #00C851;
+                  color: white;
+              }
+      
+              .btn-warning {
+                  background: #ffbb33;
+                  color: white;
+              }
+      
+              .container {
+                  max-width: 1400px;
+                  margin: 30px auto;
+                  padding: 0 20px;
+              }
+      
+              .stats-grid {
+                  display: grid;
+                  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                  gap: 20px;
+                  margin-bottom: 30px;
+              }
+      
+              .stat-card {
+                  background: white;
+                  padding: 25px;
+                  border-radius: 10px;
+                  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+              }
+      
+              .stat-card h3 {
+                  color: #666;
+                  font-size: 14px;
+                  font-weight: 600;
+                  margin-bottom: 10px;
+              }
+      
+              .stat-card .number {
+                  font-size: 36px;
+                  font-weight: bold;
+                  color: #667eea;
+              }
+      
+              .section {
+                  background: white;
+                  padding: 25px;
+                  border-radius: 10px;
+                  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                  margin-bottom: 20px;
+              }
+      
+              .section-header {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 20px;
+              }
+      
+              .section-header h2 {
+                  color: #333;
+                  font-size: 20px;
+              }
+      
+              table {
+                  width: 100%;
+                  border-collapse: collapse;
+              }
+      
+              table th,
+              table td {
+                  padding: 12px;
+                  text-align: left;
+                  border-bottom: 1px solid #eee;
+              }
+      
+              table th {
+                  background: #f8f9fa;
+                  font-weight: 600;
+                  color: #333;
+              }
+      
+              table tr:hover {
+                  background: #f8f9fa;
+              }
+      
+              .badge {
+                  padding: 4px 8px;
+                  border-radius: 4px;
+                  font-size: 12px;
+                  font-weight: 600;
+              }
+      
+              .badge-active {
+                  background: #d4edda;
+                  color: #155724;
+              }
+      
+              .badge-inactive {
+                  background: #f8d7da;
+                  color: #721c24;
+              }
+      
+              .action-btns {
+                  display: flex;
+                  gap: 5px;
+              }
+      
+              .btn-sm {
+                  padding: 5px 10px;
+                  font-size: 12px;
+              }
+      
+              .modal {
+                  display: none;
+                  position: fixed;
+                  z-index: 1000;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: rgba(0, 0, 0, 0.5);
+              }
+      
+              .modal-content {
+                  background: white;
+                  margin: 5% auto;
+                  padding: 30px;
+                  border-radius: 10px;
+                  width: 90%;
+                  max-width: 600px;
+                  max-height: 80vh;
+                  overflow-y: auto;
+              }
+      
+              .modal-header {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 20px;
+              }
+      
+              .close {
+                  font-size: 28px;
+                  font-weight: bold;
+                  cursor: pointer;
+                  color: #999;
+              }
+      
+              .close:hover {
+                  color: #333;
+              }
+      
+              .form-group {
+                  margin-bottom: 15px;
+              }
+      
+              .form-group label {
+                  display: block;
+                  margin-bottom: 5px;
+                  font-weight: 600;
+                  color: #333;
+              }
+      
+              .form-group input,
+              .form-group select,
+              .form-group textarea {
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  border-radius: 5px;
+                  font-size: 14px;
+              }
+      
+              .form-group textarea {
+                  min-height: 100px;
+                  resize: vertical;
+              }
+      
+              .alert {
+                  padding: 12px 15px;
+                  border-radius: 5px;
+                  margin-bottom: 15px;
+              }
+      
+              .alert-success {
+                  background: #d4edda;
+                  color: #155724;
+                  border: 1px solid #c3e6cb;
+              }
+      
+              .alert-error {
+                  background: #f8d7da;
+                  color: #721c24;
+                  border: 1px solid #f5c6cb;
+              }
+      
+              .hidden {
+                  display: none;
+              }
+      
+              .loading {
+                  text-align: center;
+                  padding: 20px;
+                  color: #666;
+              }
+      
+  body
+    .navbar
+      h1 ??????? MoodMeal Admin Dashboard
+      .navbar-right
+        button.btn.btn-primary(onclick='openAddMealModal()') + Add Meal
+        a.btn.btn-danger(href='/admin/logout') Logout
+    .container
+      .stats-grid
+        .stat-card
+          h3 Total Meals
+          .number#totalMeals -
+        .stat-card
+          h3 Active Meals
+          .number#activeMeals -
+        .stat-card
+          h3 Total Admins
+          .number#totalAdmins -
+      .section
+        .section-header
+          h2 All Meals
+        #alert.alert.hidden
+        #loading.loading Loading meals...
+        table#mealsTable.hidden
+          thead
+            tr
+              th Name
+              th Category
+              th Mood
+              th Status
+              th Actions
+          tbody#mealsTableBody.
+            
+            
+    //  Add/Edit Meal Modal 
+    #mealModal.modal
+      .modal-content
+        .modal-header
+          h2#modalTitle Add Meal
+          span.close(onclick='closeMealModal()') ├ù
+        form#mealForm
+          input#mealId(type='hidden')
+          .form-group
+            label(for='name') Meal Name *
+            input#name(type='text' required)
+          .form-group
+            label(for='description') Description *
+            textarea#description(required)
+          .form-group
+            label(for='category') Category *
+            select#category(required)
+              option(value) Select Category
+              option(value='breakfast') Breakfast
+              option(value='lunch') Lunch
+              option(value='dinner') Dinner
+              option(value='snack') Snack
+              option(value='dessert') Dessert
+              option(value='Main course') Main course
+              option(value='Starters') Starters
+          .form-group
+            label(for='mood') Mood *
+            select#mood(required)
+              option(value) Select Mood
+              option(value='happy') Happy
+              option(value='sad') Sad
+              option(value='energetic') Energetic
+              option(value='calm') Calm
+              option(value='stressed') Stressed
+              option(value='romantic') Romantic
+          .form-group
+            label(for='image') Image URL
+            input#image(type='url')
+          .form-group
+            label(for='ingredients') Ingredients (comma-separated)
+            textarea#ingredients(placeholder='Egg, Bread, Butter')
+          .form-group
+            label(for='calories') Calories
+            input#calories(type='number')
+          .form-group
+            label(for='prepTime') Prep Time
+            input#prepTime(type='text' placeholder='e.g., 30 minutes')
+          .form-group
+            label(for='difficulty') Difficulty
+            select#difficulty
+              option(value) Select Difficulty
+              option(value='easy') Easy
+              option(value='medium') Medium
+              option(value='hard') Hard
+          .form-group
+            label(for='rating') Rating (0-5)
+            input#rating(type='number' min='0' max='5' step='0.1')
+          button.btn.btn-success(type='submit') Save Meal
+    script.
+      
+      let meals = [];
+              
+              // Load stats and meals on page load
+              document.addEventListener('DOMContentLoaded', () => {
+                  loadStats();
+                  loadMeals();
+              });
+      
+              async function loadStats() {
+                  try {
+                      const response = await fetch('/admin/api/stats');
+                      const data = await response.json();
+                      
+                      if (data.success) {
+                          document.getElementById('totalMeals').textContent = data.stats.totalMeals;
+                          document.getElementById('activeMeals').textContent = data.stats.activeMeals;
+                          document.getElementById('totalAdmins').textContent = data.stats.totalAdmins;
+                      }
+                  } catch (error) {
+                      console.error('Error loading stats:', error);
+                  }
+              }
+      
+              async function loadMeals() {
+                  try {
+                      const response = await fetch('/admin/api/meals');
+                      const data = await response.json();
+                      
+                      if (data.success) {
+                          meals = data.meals;
+                          displayMeals();
+                          document.getElementById('loading').classList.add('hidden');
+                          document.getElementById('mealsTable').classList.remove('hidden');
+                      }
+                  } catch (error) {
+                      console.error('Error loading meals:', error);
+                      showAlert('Error loading meals', 'error');
+                  }
+              }
+      
+              function displayMeals() {
+                  const tbody = document.getElementById('mealsTableBody');
+                  tbody.innerHTML = '';
+                  
+                  meals.forEach(meal => {
+                      const row = tbody.insertRow();
+                      row.innerHTML = `
+                          <td>${meal.name}</td>
+                          <td>${meal.category}</td>
+                          <td>${meal.mood}</td>
+                          <td>
+                              <span class="badge ${meal.isActive ? 'badge-active' : 'badge-inactive'}">
+                                  ${meal.isActive ? 'Active' : 'Inactive'}
+                              </span>
+                          </td>
+                          <td>
+                              <div class="action-btns">
+                                  <button class="btn btn-warning btn-sm" onclick="editMeal('${meal._id}')">Edit</button>
+                                  <button class="btn btn-primary btn-sm" onclick="toggleMeal('${meal._id}')">Toggle</button>
+                                  <button class="btn btn-danger btn-sm" onclick="deleteMeal('${meal._id}')">Delete</button>
+                              </div>
+                          </td>
+                      `;
+                  });
+              }
+      
+              function openAddMealModal() {
+                  document.getElementById('modalTitle').textContent = 'Add Meal';
+                  document.getElementById('mealForm').reset();
+                  document.getElementById('mealId').value = '';
+                  document.getElementById('mealModal').style.display = 'block';
+              }
+      
+              function closeMealModal() {
+                  document.getElementById('mealModal').style.display = 'none';
+              }
+      
+              async function editMeal(id) {
+                  const meal = meals.find(m => m._id === id);
+                  if (!meal) return;
+                  
+                  document.getElementById('modalTitle').textContent = 'Edit Meal';
+                  document.getElementById('mealId').value = meal._id;
+                  document.getElementById('name').value = meal.name;
+                  document.getElementById('description').value = meal.description;
+                  document.getElementById('category').value = meal.category;
+                  document.getElementById('mood').value = meal.mood;
+                  document.getElementById('image').value = meal.image || '';
+                  document.getElementById('ingredients').value = meal.ingredients ? meal.ingredients.join(', ') : '';
+                  document.getElementById('calories').value = meal.calories || '';
+                  document.getElementById('prepTime').value = meal.prepTime || '';
+                  document.getElementById('difficulty').value = meal.difficulty || '';
+                  document.getElementById('rating').value = meal.rating || '';
+                  
+                  document.getElementById('mealModal').style.display = 'block';
+              }
+      
+              async function toggleMeal(id) {
+                  try {
+                      const response = await fetch(`/admin/api/meals/${id}/toggle`, {
+                          method: 'PATCH'
+                      });
+                      
+                      const data = await response.json();
+                      
+                      if (data.success) {
+                          showAlert('Meal status updated successfully', 'success');
+                          loadStats();
+                          loadMeals();
+                      } else {
+                          showAlert(data.message || 'Failed to update meal', 'error');
+                      }
+                  } catch (error) {
+                      console.error('Error toggling meal:', error);
+                      showAlert('Error updating meal status', 'error');
+                  }
+              }
+      
+              async function deleteMeal(id) {
+                  if (!confirm('Are you sure you want to delete this meal?')) return;
+                  
+                  try {
+                      const response = await fetch(`/admin/api/meals/${id}`, {
+                          method: 'DELETE'
+                      });
+                      
+                      const data = await response.json();
+                      
+                      if (data.success) {
+                          showAlert('Meal deleted successfully', 'success');
+                          loadStats();
+                          loadMeals();
+                      } else {
+                          showAlert(data.message || 'Failed to delete meal', 'error');
+                      }
+                  } catch (error) {
+                      console.error('Error deleting meal:', error);
+                      showAlert('Error deleting meal', 'error');
+                  }
+              }
+      
+              document.getElementById('mealForm').addEventListener('submit', async (e) => {
+                  e.preventDefault();
+                  
+                  const mealId = document.getElementById('mealId').value;
+                  const ingredientsText = document.getElementById('ingredients').value;
+                  const ingredients = ingredientsText ? ingredientsText.split(',').map(i => i.trim()) : [];
+                  
+                  const mealData = {
+                      name: document.getElementById('name').value,
+                      description: document.getElementById('description').value,
+                      category: document.getElementById('category').value,
+                      mood: document.getElementById('mood').value,
+                      image: document.getElementById('image').value,
+                      ingredients: ingredients,
+                      calories: document.getElementById('calories').value ? parseInt(document.getElementById('calories').value) : undefined,
+                      prepTime: document.getElementById('prepTime').value,
+                      difficulty: document.getElementById('difficulty').value,
+                      rating: document.getElementById('rating').value ? parseFloat(document.getElementById('rating').value) : undefined
+                  };
+                  
+                  try {
+                      const url = mealId ? `/admin/api/meals/${mealId}` : '/admin/api/meals';
+                      const method = mealId ? 'PUT' : 'POST';
+                      
+                      const response = await fetch(url, {
+                          method: method,
+                          headers: {
+                              'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify(mealData)
+                      });
+                      
+                      const data = await response.json();
+                      
+                      if (data.success) {
+                          showAlert(data.message, 'success');
+                          closeMealModal();
+                          loadStats();
+                          loadMeals();
+                      } else {
+                          showAlert(data.message || 'Failed to save meal', 'error');
+                      }
+                  } catch (error) {
+                      console.error('Error saving meal:', error);
+                      showAlert('Error saving meal', 'error');
+                  }
+              });
+      
+              function showAlert(message, type) {
+                  const alertBox = document.getElementById('alert');
+                  alertBox.textContent = message;
+                  alertBox.className = `alert alert-${type}`;
+                  
+                  setTimeout(() => {
+                      alertBox.className = 'alert hidden';
+                  }, 5000);
+              }
+      
+              // Close modal when clicking outside
+              window.onclick = function(event) {
+                  const modal = document.getElementById('mealModal');
+                  if (event.target == modal) {
+                      closeMealModal();
+                  }
+              }
